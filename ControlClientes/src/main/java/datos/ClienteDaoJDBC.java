@@ -135,4 +135,25 @@ public class ClienteDaoJDBC {
         }
         return rows;
     }
+    
+     public int eliminar(Cliente cliente){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows=0;
+        
+        try {
+            conn= Conexion.getConnection();
+            stmt=conn.prepareStatement(SQL_DELETE);
+            stmt.setInt(1, cliente.getIdCliente());
+            
+            rows = stmt.executeUpdate();
+            
+        } catch (Exception e) {
+                e.printStackTrace(System.out);
+        }finally{
+            Conexion.Close(stmt);
+            Conexion.Close(conn);
+        }
+        return rows;
+    }
 }
