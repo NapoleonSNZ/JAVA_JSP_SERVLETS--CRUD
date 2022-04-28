@@ -18,7 +18,7 @@ public class ClienteDaoJDBC {
     private static final String SQL_UPDATE = "UPDATE cliente SET nombre=?, apellido=?, email=?, telefono=?, saldo=? WHERE id_cliente=?";
     private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente=?";
     
-    /*Metodo para LISTAR*/
+    /*  Metodo para LISTAR  */
     public List<Cliente> listar(){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -49,7 +49,7 @@ public class ClienteDaoJDBC {
         return clientes;
     }
     
-    /*Metodo para BUSCAR*/
+    /*  Metodo para BUSCAR  */
     public Cliente buscar(Cliente cliente){
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -81,5 +81,32 @@ public class ClienteDaoJDBC {
             Conexion.Close(conn);
         }
         return cliente;
+    }
+    
+    
+    /* Metodo para INSERTAR                     ***el int(entero) es para indicar si logró o no insertar en la base de datos */  
+    public int insertar (Cliente cliente){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows=0;
+        
+        try {
+            conn= Conexion.getConnection();
+            stmt=conn.prepareStatement(SQL_INSERT);
+            stmt.setString(1, cliente.getNombre());
+            stmt.setString(2, cliente.getApellido());
+            stmt.setString(3, cliente.getEmail());
+            stmt.setString(4, cliente.getTelefono());
+            stmt.setDouble(5, cliente.getSaldo());
+            
+            rows = stmt.executeUpdate();
+            
+        } catch (Exception e) {
+                e.printStackTrace(System.out);
+        }finally{
+            Conexion.Close(stmt);
+            Conexion.Close(conn);
+        }
+        return rows;
     }
 }
