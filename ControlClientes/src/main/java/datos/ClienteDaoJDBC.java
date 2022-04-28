@@ -109,4 +109,30 @@ public class ClienteDaoJDBC {
         }
         return rows;
     }
+    
+    public int actualizar(Cliente cliente){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        int rows=0;
+        
+        try {
+            conn= Conexion.getConnection();
+            stmt=conn.prepareStatement(SQL_UPDATE);
+            stmt.setString(1, cliente.getNombre());
+            stmt.setString(2, cliente.getApellido());
+            stmt.setString(3, cliente.getEmail());
+            stmt.setString(4, cliente.getTelefono());
+            stmt.setDouble(5, cliente.getSaldo());
+            stmt.setInt(6, cliente.getIdCliente());
+            
+            rows = stmt.executeUpdate();
+            
+        } catch (Exception e) {
+                e.printStackTrace(System.out);
+        }finally{
+            Conexion.Close(stmt);
+            Conexion.Close(conn);
+        }
+        return rows;
+    }
 }
