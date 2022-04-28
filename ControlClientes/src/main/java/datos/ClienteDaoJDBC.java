@@ -2,6 +2,7 @@
 package datos;
 
 import dominio.Cliente;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,6 @@ public class ClienteDaoJDBC {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs=null;
-        Cliente cliente=null;
         List<Cliente> clientes = new ArrayList<Cliente>();
     
         try {
@@ -46,8 +46,40 @@ public class ClienteDaoJDBC {
             Conexion.Close(stmt);
             Conexion.Close(conn);
         }
-        
         return clientes;
     }
     
+    /*Metodo para BUSCAR*/
+    public Cliente buscar(Cliente cliente){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs=null;
+        
+        try {
+            conn= Conexion.getConnection();
+            stmt=conn.prepareStatement(SQL_SELECT_BY_ID);
+            stmt.setInt(1, cliente.getIdCliente());
+            rs=stmt.executeQuery();
+                rs.next();
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String email = rs.getString("email");
+                String telefono = rs.getString("telefono");
+                double saldo = rs.getDouble("saldo");
+              
+                cliente.setNombre(nombre);
+                cliente.setApellido(apellido);
+                cliente.setEmail(email);
+                cliente.setTelefono(telefono);
+                cliente.setSaldo(saldo);           
+            
+        } catch (Exception e) {
+                e.printStackTrace(System.out);
+        }finally{
+            Conexion.Close(rs);
+            Conexion.Close(stmt);
+            Conexion.Close(conn);
+        }
+        return cliente;
+    }
 }
