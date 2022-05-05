@@ -27,7 +27,7 @@ public class ServletControlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        /* ...*/
+        /* Craemos la lista de clientes...*/
         List<Cliente> clientes = new ClienteDaoJDBC().listar();
         
         System.out.println("clientes = "+clientes);

@@ -36,6 +36,7 @@ public class ClienteDaoJDBC {
                 String email = rs.getString("email");
                 String telefono = rs.getString("telefono");
                 double saldo = rs.getDouble("saldo");
+                System.out.println(nombre+" "+apellido+" "+email);
               
               clientes.add(new Cliente(idCliente,nombre,apellido,email,telefono,saldo));
             }
