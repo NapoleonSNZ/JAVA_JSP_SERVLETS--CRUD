@@ -157,4 +157,8 @@ public class ClienteDaoJDBC {
         }
         return rows;
     }
+     public static void main(){
+         ClienteDaoJDBC cliente = new ClienteDaoJDBC();
+         cliente.listar();
+     }
 }
