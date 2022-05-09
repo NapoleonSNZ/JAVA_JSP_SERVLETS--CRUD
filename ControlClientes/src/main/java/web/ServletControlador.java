@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package web;
 
 import datos.ClienteDaoJDBC;
@@ -14,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author snz
+ * @author Dino
  */
 @WebServlet(name = "ServletControlador", urlPatterns = {"/ServletControlador"})
 public class ServletControlador extends HttpServlet {

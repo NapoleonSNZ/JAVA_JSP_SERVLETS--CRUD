@@ -1,6 +1,4 @@
-
 package dominio;
-
 
 public class Cliente {
     private int idCliente;
@@ -9,13 +7,13 @@ public class Cliente {
     private String email;
     private String telefono;
     private double saldo;
-    
-    public Cliente (int idCliente){
+
+    public Cliente(int idCliente) {
         this.idCliente = idCliente;
-}
+    }
     
-     public Cliente (){
-}
+    public Cliente(){
+    }
 
     public Cliente(int idCliente, String nombre, String apellido, String email, String telefono, double saldo) {
         this.idCliente = idCliente;
@@ -23,15 +21,14 @@ public class Cliente {
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
-        this.saldo = saldo;
+        this.saldo=saldo;
     }
-
-        public Cliente( String nombre, String apellido, String email, String telefono, double saldo) {
+     public Cliente(String nombre, String apellido, String email, String telefono, double saldo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
-        this.saldo = saldo;
+        this.saldo=saldo;
     }
 
     public int getIdCliente() {
@@ -50,14 +47,13 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
+        public String getApellido() {
         return apellido;
     }
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
     public String getEmail() {
         return email;
     }
@@ -87,7 +83,5 @@ public class Cliente {
         return "Cliente{" + "idCliente=" + idCliente + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono + ", saldo=" + saldo + '}';
     }
     
-    
-    
+     
 }
-
